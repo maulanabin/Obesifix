@@ -1,0 +1,62 @@
+# Python cache & build artifacts
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.so
+*.egg-info/
+build/
+dist/
+
+# Virtual environment (jangan ikut masuk image)
+.venv/
+env/
+venv/
+ENV/
+myenv/
+
+# Jupyter Notebook checkpoints
+.ipynb_checkpoints/
+
+# Git
+.git
+.gitignore
+
+# Logs & cache
+*.log
+*.tmp
+*.swp
+*.swo
+.pytest_cache/
+.mypy_cache/
+coverage/
+
+# Config & secrets (gunakan ENV di Docker, jangan copy file ini)
+*.env
+config.json
+
+# Datasets (jangan ikut masuk image kalau gede)
+data/
+datasets/
+*.csv
+*.tsv
+*.parquet
+
+# ML models (opsional – kalau mau copy model, jangan di-ignore)
+*.h5
+*.pkl
+*.joblib
+*.ckpt
+*.pth
+*.pt
+
+# IDE / Editor files
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+
+# Docker sendiri
+Dockerfile
+docker-compose.yml
+.dockerignore

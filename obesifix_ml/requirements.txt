@@ -1,0 +1,13 @@
+Flask
+keras
+tensorflow
+numpy
+scikit-learn
+pandas
+gunicorn
+pillow
+requests
+requests-oauthlib
+jsonify
+jsonschema
+matplotlib

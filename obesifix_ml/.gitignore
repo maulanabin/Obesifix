@@ -1,0 +1,62 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.so
+
+# Virtual environment
+.env
+.venv/
+env/
+venv/
+ENV/
+
+# Jupyter Notebook checkpoints
+.ipynb_checkpoints/
+
+# Flask / instance
+instance/
+*.db
+*.sqlite3
+
+# Logs
+*.log
+
+# Config & secrets
+*.env
+config.json
+
+# Machine Learning artifacts
+*.h5
+*.pkl
+*.joblib
+*.ckpt
+*.pth
+*.pt
+
+# Dataset (opsional kalau gede)
+data/
+datasets/
+*.csv
+*.tsv
+*.parquet
+
+# IDE / OS files
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+
+# Cache
+__pycache__/
+*.pyc
+.pytest_cache/
+
+
+model/*.h5
+dataset/*.csv
+
+myenv/
+venv/
+env/

@@ -1,0 +1,14 @@
+Pelajari project Android Obesifix ini terlebih dahulu sebelum mengubah kode.
+
+Saya sedang berada di branch version2. Tolong baca file AGENTS.md, README.md, settings.gradle, build.gradle, app/build.gradle, dan app/src/main/AndroidManifest.xml. Setelah itu telusuri struktur app/src/main/java/org/obesifix/obesifix dan app/src/main/res.
+
+Project ini adalah Android native Kotlin + XML dengan MVVM, ViewBinding, Retrofit, Firebase Auth, DataStore, Room, Paging 3, Hilt, dan Material Components.
+
+Tugas awal Anda:
+1. Buat ringkasan struktur project.
+2. Identifikasi fitur utama yang sudah ada.
+3. Identifikasi area yang kemungkinan belum selesai atau rawan error.
+4. Jangan ubah kode dulu sebelum menjelaskan temuan awal.
+5. Setelah saya beri fitur spesifik, baru lakukan perubahan kecil dan aman.
+
+Gunakan bahasa Indonesia.

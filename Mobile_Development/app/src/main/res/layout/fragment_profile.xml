@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.profile.ProfileFragment">
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="165dp"
+        android:background="@drawable/ellipse_img" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="700dp"
+        android:padding="16dp">
+
+        <TextView
+            android:id="@+id/tv_username"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:fontFamily="@font/poppinsbold"
+            android:text="@string/name"
+            android:textColor="@color/grey"
+            android:textSize="16sp"
+            app:layout_constraintEnd_toEndOf="@+id/profile_img"
+            app:layout_constraintStart_toStartOf="@+id/profile_img"
+            app:layout_constraintTop_toBottomOf="@+id/profile_img" />
+
+        <TextView
+            android:id="@+id/tv_email"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/poppinsmedium"
+            android:text="@string/email"
+            android:textSize="16sp"
+            android:textColor="@color/grey"
+            app:layout_constraintEnd_toEndOf="@+id/tv_username"
+            app:layout_constraintStart_toStartOf="@+id/tv_username"
+            app:layout_constraintTop_toBottomOf="@+id/tv_username" />
+
+        <ImageView
+            android:id="@+id/profile_img"
+            android:layout_width="140dp"
+            android:layout_height="140dp"
+            android:layout_marginTop="70dp"
+            android:background="@drawable/profile_personal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/MyProfile"
+            android:layout_width="350dp"
+            android:layout_height="60dp"
+            android:layout_centerHorizontal="true"
+            app:cardCornerRadius="15dp"
+            app:cardElevation="4dp"
+            android:foreground="?android:attr/selectableItemBackground"
+            android:clickable="true"
+            android:layout_marginTop="16dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_email">
+
+            <ImageView
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="16dp"
+                android:background="@drawable/profile_img" />
+
+            <ImageView
+                android:layout_width="6dp"
+                android:layout_height="10dp"
+                android:layout_gravity="center"
+                android:layout_marginLeft="160dp"
+                android:background="@drawable/arrow_icon" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="64dp"
+                android:fontFamily="@font/poppinsmedium"
+                android:text="@string/my_profil"
+                android:textColor="@color/primaryblue"
+                android:textSize="18sp" />
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/About"
+            android:layout_width="350dp"
+            android:layout_height="60dp"
+            android:layout_centerHorizontal="true"
+            android:layout_marginStart="32dp"
+            android:layout_marginEnd="32dp"
+            app:cardCornerRadius="15dp"
+            app:cardElevation="4dp"
+            android:foreground="?android:attr/selectableItemBackground"
+            android:clickable="true"
+            android:layout_marginTop="16dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/MyProfile">
+
+            <ImageView
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="20dp"
+                android:background="@drawable/about_icon" />
+
+            <ImageView
+                android:layout_width="6dp"
+                android:layout_height="10dp"
+                android:layout_gravity="center"
+                android:layout_marginLeft="160dp"
+                android:background="@drawable/arrow_icon" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="64dp"
+                android:fontFamily="@font/poppinsmedium"
+                android:text="@string/about"
+                android:textColor="@color/primaryblue"
+                android:textSize="18sp" />
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/logout"
+            android:layout_width="150dp"
+            android:layout_height="60dp"
+            android:layout_marginTop="16dp"
+            android:layout_centerHorizontal="true"
+            android:layout_marginStart="32dp"
+            android:layout_marginEnd="32dp"
+            app:cardCornerRadius="15dp"
+            app:cardElevation="4dp"
+            android:foreground="?android:attr/selectableItemBackground"
+            android:clickable="true"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/About">
+
+            <ImageView
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="20dp"
+                android:background="@drawable/logout_icon" />
+
+            <ImageView
+                android:layout_width="6dp"
+                android:layout_height="10dp"
+                android:layout_gravity="center"
+                android:layout_marginLeft="160dp"
+                android:background="@drawable/arrow_icon" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="64dp"
+                android:fontFamily="@font/poppinsmedium"
+                android:text="@string/logout"
+                android:textColor="@color/primaryblue"
+                android:textSize="18sp" />
+        </androidx.cardview.widget.CardView>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</FrameLayout>
+</ScrollView>

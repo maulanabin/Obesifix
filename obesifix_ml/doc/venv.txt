@@ -1,0 +1,8 @@
+
+HOW TO RUN VIRTUAL ENV:
+
+1. using python:
+create: python -m venv myenv
+activate: myenv\Scripts\activate [cmd]
+deactivate: deactivate
+

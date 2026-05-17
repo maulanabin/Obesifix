@@ -1,0 +1,38 @@
+{
+  "name": "obesifix_be_25",
+  "version": "1.0.0",
+  "main": "src/main.js",
+  "scripts": {
+    "dev": "nodemon src/main.js",
+    "start": "node src/main.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "type": "module",
+  "description": "",
+  "dependencies": {
+    "@google-cloud/storage": "^7.16.0",
+    "@prisma/client": "^6.13.0",
+    "axios": "^1.11.0",
+    "bcrypt": "^6.0.0",
+    "body-parser": "^2.2.0",
+    "cors": "^2.8.5",
+    "dotenv": "^17.2.1",
+    "express": "^5.1.0",
+    "firebase-admin": "^13.4.0",
+    "joi": "^18.0.0",
+    "jsonwebtoken": "^9.0.2",
+    "multer": "^2.0.2",
+    "uuid": "^11.1.0"
+  },
+  "devDependencies": {
+    "@types/bcrypt": "^6.0.0",
+    "@types/cors": "^2.8.19",
+    "@types/express": "^5.0.3",
+    "@types/jsonwebtoken": "^9.0.10",
+    "@types/multer": "^2.0.0",
+    "@types/uuid": "^10.0.0",
+    "nodemon": "^3.1.10",
+    "prisma": "^6.13.0"
+  }
+}

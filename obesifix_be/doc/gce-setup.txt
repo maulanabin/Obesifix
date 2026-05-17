@@ -1,0 +1,86 @@
+==== NOTE: HANYA UNTUK PERCOBAAN, BUKAN UNTUK PRODUCTION =====
+
+== PREPERATION ==
+- push docker image to artifact registri
+- buat instance cloud SQL, database, dan setup tablenya
+- buat intance google compute engine
+
+== CHANGE ACCESS ==
+== SECRUTIY ALERT ==
+1. tambahkan ip public compute engine ke cloud sql (connection  => authorized network)
+2. tambahkan access allUsers di repository artifact registry dengan role : artifact registry reader
+
+
+== SSH atau masuk ke instance GCE ===
+1. update linux repo dan instal docker:
+
+sudo apt update
+sudo apt install -y ca-certificates curl gnupg lsb-release
+
+
+sudo install -m 0755 -d /etc/apt/keyrings
+curl -fsSL https://download.docker.com/linux/debian/gpg | sudo gpg --dearmor -o /etc/apt/keyrings/docker.gpg
+sudo chmod a+r /etc/apt/keyrings/docker.gpg
+
+echo \
+  "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.gpg] https://download.docker.com/linux/debian \
+  $(lsb_release -cs) stable" | \
+  sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
+
+sudo apt update
+sudo apt install -y docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
+
+sudo systemctl status docker
+
+sudo usermod -aG docker $USER
+newgrp docker
+
+2. pull docker image from artifact registry (llihat dokumentasi dari google cloudnya)
+3. setup docker container:
+
+-- bikin docker netowrk --
+docker network create obesifix-net
+
+-- run ml container --
+docker run -d \
+  --name [container-name] \
+  --network [network-name] \
+  -p 8080:8080 \
+  [image-name]:[image-tag]
+
+contoh:
+docker run -d \
+  --name obesifix-ml-container \
+  --network obesifix-net \
+  -p 8080:8080 \
+  obesifix-ml-25:latest
+
+-- run be container --
+docker run -d \
+  --name [container-name] \
+  --network [network name] \
+  -p 3000:3000 \
+  -e DATABASE_URL="[url db using prisma format]" \
+  -e DEFAULT_IMAGE_URL="https://picsum.photos/200/300" \
+  -e JWT_KEY="rahasia" \
+  -e ML_BASE_URL=[ml-container-name]:[expose-port] \
+  [be-image]:[image-tag]
+
+contoh:
+docker run -d \
+  --name obesifix-be-container \
+  --network obesifix-net \
+  -p 3000:3000 \
+  -e DATABASE_URL="mysql://root:rootPassword@10.10.11.11:3306/obesifix_25" \
+  -e DEFAULT_IMAGE_URL="https://picsum.photos/200/300" \
+  -e JWT_KEY="rahasia" \
+  -e ML_BASE_URL="http://obesifix-ml-container:8080" \
+  obesifix-be-25:latest
+
+untuk DB URL perhatikan sebagai berikut:
+mysql://[user]:[Password]@[ip external cloud sql]:3306/[DB-name]
+contoh:
+mysql://root:rootPassword@10.10.11.11:3306/obesifix_25
+
+
+untuk akses: http://ipexternalGCE:port-BE-Container

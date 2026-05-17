@@ -1,0 +1,88 @@
+reigtser:
+{
+    "status": true,
+    "statusCode": 201,
+    "message": "Success register data"
+}
+
+login:
+{
+    "status": true,
+    "statusCode": 200,
+    "message": "Success login",
+    "data": {
+        "userId": "0394526f-7a6a-4505-b4bd-17ec5b213057",
+        "accessToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwYXlsb2FkIjp7InVzZXJfaWQiOiIwMzk0NTI2Zi03YTZhLTQ1MDUtYjRiZC0xN2VjNWIyMTMwNTciLCJlbWFpbCI6Im9iZXNpZml4QGdtYWlsLmNvbSJ9LCJpYXQiOjE3NTgyODYwOTQsImV4cCI6MTc1ODU0NTI5NH0.vgoGxEtz9fBCz9ot5VZjtyETUsSNgmRZWC2dCgR4aIU",
+        "refreshToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwYXlsb2FkIjp7InVzZXJfaWQiOiIwMzk0NTI2Zi03YTZhLTQ1MDUtYjRiZC0xN2VjNWIyMTMwNTciLCJlbWFpbCI6Im9iZXNpZml4QGdtYWlsLmNvbSJ9LCJpYXQiOjE3NTgyODYwOTQsImV4cCI6MTc1OTE1MDA5NH0.X6c9sPr0N1Pa6vnNctbEJTPw7pehGlYSfcV9x8llbiM"
+    }
+}
+
+getUser:
+{
+    "status": true,
+    "statusCode": 200,
+    "message": "Success get user data",
+    "data": {
+        "user_id": "0394526f-7a6a-4505-b4bd-17ec5b213057",
+        "name": "obesifix-test",
+        "email": "obesifix@gmail.com",
+        "picture": "image.com",
+        "age": 20,
+        "gender": "male",
+        "height": 170,
+        "weight": 60,
+        "activity": "veryActive",
+        "food_type": "Fruit,Duck,Pasta",
+        "created_at": "2025-09-19T12:47:37.298Z",
+        "updated_at": "2025-09-19T12:47:37.298Z"
+    }
+}
+
+update User:
+{
+    "status": true,
+    "statusCode": 200,
+    "message": "Success update user"
+}
+
+refresh-tokenn:
+{
+    "status": true,
+    "statusCode": 200,
+    "message": "Success refresh token",
+    "data": {
+        "access_token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwYXlsb2FkIjp7InVzZXJfaWQiOiIwMzk0NTI2Zi03YTZhLTQ1MDUtYjRiZC0xN2VjNWIyMTMwNTciLCJlbWFpbCI6Im9iZXNpZml4QGdtYWlsLmNvbSJ9LCJpYXQiOjE3NTgyODYxNzEsImV4cCI6MTc1ODU0NTM3MX0.1t2JND9mfJWrFtfkTiJObbpXx5On2XTfHQL5kqieomE"
+    }
+}
+
+logout :
+{
+    "status": true,
+    "statusCode": 200,
+    "message": "Success logout"
+}
+
+
+
+
+
+
+ML:
+
+prediction:
+{
+    "status": true,
+    "statusCode": 200,
+    "message": "Success classify food image",
+    "food_data": {
+        "description": "Apples are an incredibly nutritious fruit that offers multiple health benefits. They're rich in fiber and antioxidants. Eating them is linked to a lower risk of many chronic conditions, including diabetes, heart disease, and cancer. Apples may also promote weight loss and improve gut and brain health.",
+        "name": "apple",
+        "serving": 200,
+        "total_cal": 104,
+        "total_carb": 28.000000000000004,
+        "total_fat": 0.4,
+        "total_protein": 0.6
+    }
+}
+
+recomendation

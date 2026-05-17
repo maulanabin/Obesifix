@@ -1,0 +1,14 @@
+[core]
+	repositoryformatversion = 0
+	filemode = false
+	bare = false
+	logallrefupdates = true
+	symlinks = false
+	ignorecase = true
+[remote "origin"]
+	url = https://github.com/Obesifix-Bangkit-2023/Mobile_Development.git
+	fetch = +refs/heads/*:refs/remotes/origin/*
+[branch "version2"]
+	remote = origin
+	merge = refs/heads/version2
+	vscode-merge-base = origin/master

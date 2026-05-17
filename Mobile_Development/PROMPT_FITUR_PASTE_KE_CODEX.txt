@@ -1,0 +1,16 @@
+Saya ingin Anda memperbaiki/menambahkan fitur berikut di project Android Obesifix branch version2:
+
+[TULIS FITUR YANG INGIN DIKERJAKAN DI SINI]
+
+Sebelum mengubah kode:
+1. Baca AGENTS.md.
+2. Cek file terkait di Activity/Fragment, ViewModel, Repository, ApiService, model payload/response, XML layout, Room/DataStore jika terkait.
+3. Jelaskan dulu alur fitur yang sekarang.
+4. Baru lakukan perubahan paling kecil dan aman.
+5. Jangan rewrite besar-besaran.
+6. Jangan ubah package name.
+7. Jangan ubah backend base URL kecuali memang diperlukan.
+8. Jangan expose token, password, API key, local.properties, atau file rahasia.
+9. Setelah selesai, jelaskan file yang diubah dan cara test dengan Gradle/emulator.
+
+Gunakan bahasa Indonesia.

@@ -1,0 +1,22 @@
+.env
+  *.env
+  local.properties
+
+  .gradle/
+  build/
+  **/build/
+  .idea/
+
+  node_modules/
+
+  __pycache__/
+  *.pyc
+  .venv/
+  venv/
+
+  *.log
+  hs_err_pid*.log
+  replay_pid*.log
+
+  obesifix_ml/dataset/
+  obesifix_ml/model/

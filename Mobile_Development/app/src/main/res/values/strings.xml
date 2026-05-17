@@ -1,0 +1,143 @@
+<resources>
+    <string name="app_name">Obesifix</string>
+    <string name="recommendation_desc_picture">picture of recommendation</string>
+    <!-- navbar -->
+    <string name="title_home">Home</string>
+    <string name="title_calculate">Calculate</string>
+    <string name="title_scan">Scan</string>
+    <string name="title_mentoring">Mentoring</string>
+    <string name="title_profile">Profile</string>
+    <!-- onboarding 1 -->
+    <string name="skip">Skip Tour</string>
+    <string name="foodscanner">Food Scanner Calorie</string>
+    <string name="desc_foodscanner">Capture food with your camera, get detailed nutritional info instantly!</string>
+    <!-- onboarding 2 -->
+    <string name="kkalcalculate">Calorie Calculation</string>
+    <string name="desc_calculate">Calculate food calories for effective intake monitoring.</string>
+    <!-- onboarding 3 -->
+    <string name="foodreccomen">Food Recommendations</string>
+    <string name="des_foodreccomen">Personalized suggestions based on calories and user preferences.</string>
+    <string name="getstarted">Get Started</string>
+    <!-- login -->
+    <string name="google">Login with Google</string>
+    <string name="header_login">Login</string>
+    <string name="desc_login">Login and Begin Empowering Your Health!</string>
+    <string name="footer">You are completely safe</string>
+    <string name="term">Read our Terms and Conditions</string>
+    <string name="failed_login">Failed to login</string>
+    <string name="new_user">Register First</string>
+    <string name="enter_email" translatable="false">"Email"</string>
+    <string name="enter_password">"Password"</string>
+    <string name="register1">Don\'t have account ? Register</string>
+    <string name="login">Login</string>
+    <string name="register_result">Success Register New Account</string>
+    <!-- profile -->
+    <string name="my_profil">My Profile</string>
+    <string name="about">About Obesifix</string>
+    <string name="logout">Logout</string>
+    <string name="name">Username</string>
+    <string name="email">Username@gmail.com</string>
+    <!-- activity preference -->
+    <string name="title_preference">Hello! First we need to know more about you</string>
+    <string name="male">Male</string>
+    <string name="female">Female</string>
+    <string name="enter_height">Enter Your Height on cm</string>
+    <string name="fruit">Fruit</string>
+    <string name="vegetable">Vegetable</string>
+    <string name="meat">Meat</string>
+    <string name="age">Age</string>
+    <string name="weight">Weight(kg)</string>
+    <string name="height">Height(cm)</string>
+    <string name="activity_level">Level Aktifitas</string>
+    <string name="submit_button">Submit</string>
+    <string name="selected_foods">Selected Food Items:</string>
+    <string name="name_tv">Name</string>
+    <string name="name_hint">Enter your name</string>
+    <string name="email_tv" translatable="false">Email</string>
+    <string name="email_hint">Enter your email</string>
+    <string name="password_hint">Enter your password</string>
+    <!--home fragment-->
+    <string name="motivation_card">Let’s Explore the nutritional insights of your food!</string>
+    <string name="recommendation">Recommendation for you</string>
+    <string name="see_all">See all ></string>
+    <string name="welcome">Welcome !</string>
+    <!-- item_col_home_recommendation for home fragment -->
+    <string name="name_recommendation">Recommendation</string>
+    <string name="cal_recommendation">0 Cal</string>
+    <!-- fragment calculate -->
+    <string name="title_name">Name:</string>
+    <string name="title_status">Status:</string>
+    <string name="name_desc">User</string>
+    <string name="status_desc">Normal</string>
+    <string name="header_calculation">Calculate Your Food\'s Health!</string>
+
+    <string name="title_cal">Calorie</string>
+    <string name="cal_desc">0</string>
+    <string name="cal_need">from 0 Kcal</string>
+
+    <string name="title_fat">Fat</string>
+    <string name="fat_desc">0</string>
+    <string name="fat_need">from 0g</string>
+
+    <string name="title_protein">Protein</string>
+    <string name="protein_desc">0</string>
+    <string name="protein_need">from 0g</string>
+
+    <string name="title_carbo">Carbohydrate</string>
+    <string name="carbo_desc">0</string>
+    <string name="carbo_need">from 0g</string>
+
+    <string name="another_current">that you have added</string>
+    <string name="submit">Add Data for Today</string>
+
+    <string name="calorie">Calorie</string>
+    <string name="warningkkal">Calorie is exceed</string>
+
+    <!-- activity List   -->
+    <string name="search_bar">Search…</string>
+    <!-- item loading Layout for Paging   -->
+    <string name="retry">Try Again</string>
+    <!-- splashscreen -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <!-- page scan -->
+    <string name="scanyourfood">Check your food and beverage now!</string>
+    <string name="name_Food">Name Food</string>
+    <string name="aboutfood">About Food</string>
+    <string name="addfood">Add Food</string>
+    <string name="serving">Serving/g</string>
+    <string name="protein">Protein/g</string>
+    <string name="fat">Fat/g</string>
+    <string name="caloriepergram">Calorie/g</string>
+    <string name="carbo">Carbo/g</string>
+    <string name="desc_food">An omelet is a dish you might order for breakfast or brunch — its kind of like a folded pancake made of beaten eggs, sometimes with the addition of fillings. It is quite common it to have fillings such as chives, vegetables, mushrooms, meat (often ham or bacon), cheese, onions or some combination of the above An omelet is a dish you might order for breakfast or brunch its kind of like a folded pancake made of beaten eggs, sometimes with the addition of fillings. It s fillings can be varied, such as chives, vegetables, mushrooms, meat (often ham or bacon), cheese, onions or some combination of the above
+</string>
+    <!-- detail page -->
+    <string name="title_portion">Portion</string>
+    <string name="portion_desc">0 Cup</string>
+    <string name="title_tag">Tag</string>
+    <string name="tag_desc">#tag</string>
+    <!-- about page   -->
+    <string name="about_text">About Us</string>
+    <string name="about_detail_text">An application that helps you to track the nutritional information of the foods you eat.</string>
+    <!-- item history   -->
+    <string name="tv_food">Food Name</string>
+    <string name="total_cal">0 Kcal</string>
+    <string name="total_fat">0 g</string>
+    <string name="total_protein">0 g</string>
+    <string name="total_carb">0 g</string>
+    <string name="tv_history_today">Today\'s History</string>
+    <!-- History Adapter-->
+    <string name="confirmation">Confirmation</string>
+    <string name="message">Are you sure you want to remove this item?</string>
+    <string name="positive">Remove</string>
+    <string name="negative">Cancel</string>
+    <string name="gender">Gender</string>
+    <string name="enter_age">"Enter Your Age "</string>
+    <string name="enter_weight">Enter Your Weight on kg</string>
+    <string name="eat_preference">Eating Preference(Multiple Choose)</string>
+    <!-- edit activity   -->
+    <string name="title_edit">Edit Data</string>
+    <string name="button">Update</string>
+    <string name="success_update">Success to Update the Preference</string>
+    <string name="failed_update">Failed to Update</string>
+</resources>

@@ -1,0 +1,37 @@
+docker build -t obesifix-ml-25:latest .
+
+
+docker run -d -p 8080:8080 --name obesifix-ml-container obesifix-ml-25:latest
+
+
+
+docker build -t obesifix-be-25:latest .
+
+docker run -d \
+  -p 3000:3000 \
+  --name obesifix-be-container \
+  -e DATABASE_URL="mysql://root:@host.docker.internal:3306/obesifix_25" \
+  -e DEFAULT_IMAGE_URL="https://picsum.photos/200/300" \
+  -e JWT_KEY="obesifix_25" \
+  -e ML_BASE_URL="http://host.docker.internal:8080" \
+  obesifix-be-25
+
+
+  =============================== with docker network =============================
+  docker network create obesifix-net
+
+docker run -d \
+  --name obesifix-ml-container \
+  --network obesifix-net \
+  -p 8080:8080 \
+  obesifix-ml-25:latest
+
+docker run -d \
+  --name obesifix-be-container \
+  --network obesifix-net \
+  -p 3000:3000 \
+  -e DATABASE_URL="mysql://root:@host.docker.internal:3306/obesifix_25" \
+  -e DEFAULT_IMAGE_URL="https://picsum.photos/200/300" \
+  -e JWT_KEY="obesifix_25" \
+  -e ML_BASE_URL="http://obesifix-ml-container:8080" \
+  obesifix-be-25:latest
