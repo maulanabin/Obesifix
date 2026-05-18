@@ -87,7 +87,7 @@ class PreferenceActivity : AppCompatActivity() {
 
         binding.spinnerActivities.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
             override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
-                activitySelectedOption = activityOptions[position].lowercase()
+                activitySelectedOption = mapActivityValue(activityOptions[position])
                 updateButtonState()
                 textWatcher.afterTextChanged(null)
             }
@@ -189,5 +189,15 @@ class PreferenceActivity : AppCompatActivity() {
 
     private fun showLoading(isLoading: Boolean) {
         binding.progressBar.visibility = if (isLoading) View.VISIBLE else View.GONE
+    }
+
+    private fun mapActivityValue(label: String): String {
+        return when (label) {
+            "Sedentary" -> "sedentary"
+            "Low activity" -> "lowActive"
+            "Active" -> "active"
+            "Very active" -> "veryActive"
+            else -> ""
+        }
     }
 }

@@ -1,8 +1,8 @@
-Flask
-tensorflow
-numpy
-scikit-learn
-pandas
-gunicorn
-pillow
-jsonschema
+Flask==3.0.3
+tensorflow==2.15.1
+numpy==1.26.4
+scikit-learn==1.4.2
+pandas==2.2.2
+gunicorn==22.0.0
+pillow==10.4.0
+jsonschema==4.23.0

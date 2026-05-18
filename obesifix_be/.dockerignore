@@ -1,1 +1,12 @@
-node_modules
+node_modules/
+
+.env
+.env.*
+
+.git/
+.git_backup_be/
+
+doc/cred/
+
+*.log
+logs/

@@ -26,7 +26,7 @@ interface Api {
                 .writeTimeout(240, TimeUnit.SECONDS)
                 .build()
             return Retrofit.Builder()
-                .baseUrl("https://be-obesifix-3ait7rquuq-as.a.run.app/")
+                .baseUrl("https://obesifix-be-2025-updated-3628634072.asia-southeast2.run.app/")
                 .addConverterFactory(GsonConverterFactory.create())
                 .client(client)
                 .build()
