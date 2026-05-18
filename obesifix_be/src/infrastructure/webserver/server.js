@@ -14,8 +14,36 @@ export default function createServer(userRoutes, mlRoutes) {
   };
   app.use(cors(corsConfig));
 
+  app.get("/", (req, res) => {
+    res.status(200).send({
+      status: true,
+      message: "Obesifix backend is running",
+    });
+  });
+
+  app.get("/health", (req, res) => {
+    res.status(200).send({
+      status: true,
+      message: "OK",
+    });
+  });
+
   app.use(userRoutes);
   app.use(mlRoutes);
+
+  app.use((req, res) => {
+    res.status(404).send({
+      status: false,
+      message: "Route not found",
+    });
+  });
+
+  app.use((error, req, res, next) => {
+    res.status(400).send({
+      status: false,
+      message: error.message,
+    });
+  });
 
   return app;
 }

@@ -7,6 +7,10 @@ export default class TokenRepository {
     throw new Error("Method not implemented");
   }
 
+  async getByUserId(userId) {
+    throw new Error("Method not implemented");
+  }
+
   async deleteToken(userId) {
     throw new Error("Method not implemented");
   }

@@ -1,8 +1,6 @@
 import tensorflow as tf
-from keras.utils import load_img, img_to_array
-import requests
+from tensorflow.keras.utils import img_to_array
 from PIL import Image
-from io import BytesIO
 import pandas as pd
 import os
 
@@ -14,7 +12,7 @@ model_file = os.path.join(BASE_DIR, "model", "model_prep_rms_new.h5")
 data = pd.read_csv(nutrition_file)
 names = data.ingr
 
-model = tf.keras.models.load_model(model_file)
+model = tf.keras.models.load_model(model_file, compile=False)
 
 # def classify_image(url):
 #     response = requests.get(url)
@@ -45,10 +43,11 @@ def classify_image(file):
     try:
         # buka image dengan context manager
         with Image.open(file.stream) as img:
+            img = img.convert("RGB")
             x = img_to_array(img.resize((256, 256)))
             x = tf.expand_dims(x, axis=0) / 255.
 
-            classes = model.predict(x, batch_size=128).argmax(axis=1)[0]
+            classes = model.predict(x, batch_size=128, verbose=0).argmax(axis=1)[0]
 
         # ambil data hasil prediksi
         name = names[classes]
@@ -62,10 +61,10 @@ def classify_image(file):
         return {
             "name": name,
             "serving": int(serving),
-            "total_cal": serving * calorie,
-            "total_fat": serving * fat,
-            "total_carb": serving * carb,
-            "total_protein": serving * protein,
+            "total_cal": float(serving * calorie),
+            "total_fat": float(serving * fat),
+            "total_carb": float(serving * carb),
+            "total_protein": float(serving * protein),
             "description": desc
         }
     except Exception as e:

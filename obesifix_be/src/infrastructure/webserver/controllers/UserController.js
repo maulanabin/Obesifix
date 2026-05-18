@@ -42,6 +42,9 @@ export default class UserController {
   getUser = async (req, res) => {
     try {
       const userId = req.params.userId;
+      if (req.user.user_id !== userId) {
+        throw new Error("Unauthorized");
+      }
 
       const user = await this.userUseCase.getUser(userId);
       const dataRes = {

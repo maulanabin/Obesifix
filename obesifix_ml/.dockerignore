@@ -38,12 +38,10 @@ config.json
 # Datasets (jangan ikut masuk image kalau gede)
 data/
 datasets/
-*.csv
 *.tsv
 *.parquet
 
 # ML models (opsional – kalau mau copy model, jangan di-ignore)
-*.h5
 *.pkl
 *.joblib
 *.ckpt

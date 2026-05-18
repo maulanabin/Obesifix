@@ -18,8 +18,6 @@ import retrofit2.Callback
 import retrofit2.Response
 import javax.inject.Inject
 import kotlin.math.pow
-import java.math.BigDecimal
-import java.math.BigInteger
 
 
 
@@ -93,7 +91,7 @@ class CalculateRepository@Inject constructor(private val context: Context, appli
 
     fun getUserStatus() {
         val weight = _userDataResponse.value?.userData?.weight ?: 0.0
-        val height = _userDataResponse.value?.userData?.height ?: 0.0
+        val height = (_userDataResponse.value?.userData?.height ?: 0.0) / 100.0
         val powHeight = height.pow(2.0)
 
         val status = if (powHeight != 0.0) weight / powHeight else 0.0
@@ -120,17 +118,17 @@ class CalculateRepository@Inject constructor(private val context: Context, appli
                 val age = _userDataResponse.value?.userData?.age
                 val activity = _userDataResponse.value?.userData?.activity
                 val weight = _userDataResponse.value?.userData?.weight
-                val height = _userDataResponse.value?.userData?.height
+                val height = (_userDataResponse.value?.userData?.height ?: 0.0) / 100.0
 
                 val activityPoint = when (activity) {
-                    "sedentary" -> 1.00f
-                    "low activity" -> 1.11f
-                    "active" -> 1.25f
-                    "very active" -> 1.48f
-                    else -> 0.0f
+                    "sedentary" -> 1.00
+                    "lowActive", "low activity" -> 1.11
+                    "active" -> 1.25
+                    "veryActive", "very active" -> 1.48
+                    else -> 0.0
                 }
 
-                val eer = 662 - (9.35 * age!!) + activityPoint * (15.91 * weight!! + 539.6 * height!!)
+                val eer = 662 - (9.35 * (age ?: 0)) + activityPoint * (15.91 * (weight ?: 0.0) + 539.6 * height)
                 _calNeed.value = eer.toFloat()
                 Log.d(ContentValues.TAG, "getCalNeed undernormal male${_calNeed.value}")
             }else{
@@ -138,17 +136,17 @@ class CalculateRepository@Inject constructor(private val context: Context, appli
                 val age = _userDataResponse.value?.userData?.age
                 val activity = _userDataResponse.value?.userData?.activity
                 val weight = _userDataResponse.value?.userData?.weight
-                val height = _userDataResponse.value?.userData?.height
+                val height = (_userDataResponse.value?.userData?.height ?: 0.0) / 100.0
 
-                val activityPoint: Float = when (activity) {
-                    "sedentary" -> 1.00f
-                    "low activity" -> 1.12f
-                    "active" -> 1.27f
-                    "very active" -> 1.45f
-                    else -> 0.0f
+                val activityPoint = when (activity) {
+                    "sedentary" -> 1.00
+                    "lowActive", "low activity" -> 1.12
+                    "active" -> 1.27
+                    "veryActive", "very active" -> 1.45
+                    else -> 0.0
                 }
 
-                val eer = 354 - (6.91 * age!!) + activityPoint * (9.36 * weight!! + 726 * height!!)
+                val eer = 354 - (6.91 * (age ?: 0)) + activityPoint * (9.36 * (weight ?: 0.0) + 726 * height)
                 _calNeed.value = eer.toFloat()
                 Log.d(ContentValues.TAG, "getCalNeed undernormal female${_calNeed.value}")
             }
@@ -160,17 +158,17 @@ class CalculateRepository@Inject constructor(private val context: Context, appli
                 val age = _userDataResponse.value?.userData?.age
                 val activity = _userDataResponse.value?.userData?.activity
                 val weight = _userDataResponse.value?.userData?.weight
-                val height = _userDataResponse.value?.userData?.height
+                val height = (_userDataResponse.value?.userData?.height ?: 0.0) / 100.0
 
                 val activityPoint = when (activity) {
-                    "sedentary" -> 1.00f
-                    "low activity" -> 1.12f
-                    "active" -> 1.29f
-                    "very active" -> 1.59f
-                    else -> 0.0f
+                    "sedentary" -> 1.00
+                    "lowActive", "low activity" -> 1.12
+                    "active" -> 1.29
+                    "veryActive", "very active" -> 1.59
+                    else -> 0.0
                 }
 
-                val eer = 1086 - (10.1 * age!!) + activityPoint * (13.7 * weight!! + 416 * height!!)
+                val eer = 1086 - (10.1 * (age ?: 0)) + activityPoint * (13.7 * (weight ?: 0.0) + 416 * height)
                 _calNeed.value = eer.toFloat()
                 Log.d(ContentValues.TAG, "getCalNeed over male${_calNeed.value}")
             }else{
@@ -178,17 +176,17 @@ class CalculateRepository@Inject constructor(private val context: Context, appli
                 val age = _userDataResponse.value?.userData?.age
                 val activity = _userDataResponse.value?.userData?.activity
                 val weight = _userDataResponse.value?.userData?.weight
-                val height = _userDataResponse.value?.userData?.height
+                val height = (_userDataResponse.value?.userData?.height ?: 0.0) / 100.0
 
-                val activityPoint: Float = when (activity) {
-                    "sedentary" -> 1.00f
-                    "low activity" -> 1.16f
-                    "active" -> 1.27f
-                    "very active" -> 1.44f
-                    else -> 0.0f
+                val activityPoint = when (activity) {
+                    "sedentary" -> 1.00
+                    "lowActive", "low activity" -> 1.16
+                    "active" -> 1.27
+                    "veryActive", "very active" -> 1.44
+                    else -> 0.0
                 }
 
-                val eer = 448 - (7.95 * age!!) + activityPoint * (11.4 * weight!! + 619 * height!!)
+                val eer = 448 - (7.95 * (age ?: 0)) + activityPoint * (11.4 * (weight ?: 0.0) + 619 * height)
                 _calNeed.value = eer.toFloat()
                 Log.d(ContentValues.TAG, "getCalNeed over female${_calNeed.value}")
             }

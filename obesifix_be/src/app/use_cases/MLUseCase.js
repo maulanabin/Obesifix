@@ -1,5 +1,4 @@
-import fetch from "node-fetch";
-import FormData from "form-data";
+import { Blob } from "node:buffer";
 import {
   calculateNutritionStatus,
   recomendationToArrayConverter,
@@ -17,17 +16,14 @@ export default class MLUseCase {
     }
 
     const form = new FormData();
-    form.append("image", imageFile.buffer, {
-      filename: imageFile.originalname,
-      contentType: imageFile.mimetype,
-    });
+    const imageBlob = new Blob([imageFile.buffer], { type: imageFile.mimetype });
+    form.append("image", imageBlob, imageFile.originalname);
 
     const mlUrl = this.configLoader.ML_BASE_URL + "/prediction";
 
     const response = await fetch(mlUrl, {
       method: "POST",
       body: form,
-      headers: form.getHeaders(),
     });
 
     if (!response.ok) {

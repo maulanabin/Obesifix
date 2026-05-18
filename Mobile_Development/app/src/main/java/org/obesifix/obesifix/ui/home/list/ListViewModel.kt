@@ -7,11 +7,9 @@ import androidx.lifecycle.viewModelScope
 import androidx.paging.PagingData
 import androidx.paging.cachedIn
 import androidx.paging.filter
-import dagger.hilt.android.lifecycle.HiltViewModel
 import org.obesifix.obesifix.network.response.FoodListItem
 import javax.inject.Inject
 
-@HiltViewModel
 class ListViewModel@Inject constructor(private val listRepository: ListRepository): ViewModel() {
     val isLoading = listRepository.isLoading
     fun getRecommendation(token: String, id: String): LiveData<PagingData<FoodListItem>> =

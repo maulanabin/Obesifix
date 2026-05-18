@@ -5,11 +5,13 @@ export const registerUserValidation = (payload) => {
     name: Joi.string().required(),
     email: Joi.string().email().required(),
     password: Joi.string().required(),
-    age: Joi.number().required(),
-    gender: Joi.string().required(),
-    height: Joi.number().required(),
-    weight: Joi.number().required(),
-    activity: Joi.string().required(),
+    age: Joi.number().integer().min(1).required(),
+    gender: Joi.string().valid("male", "female").required(),
+    height: Joi.number().positive().required(),
+    weight: Joi.number().positive().required(),
+    activity: Joi.string()
+      .valid("sedentary", "lowActive", "active", "veryActive")
+      .required(),
     food_type: Joi.string().required(),
   });
 
@@ -28,10 +30,12 @@ export const loginUserValidation = (payload) => {
 export const updateUserValidation = (payload) => {
   const schema = Joi.object({
     name: Joi.string().allow(null),
-    age: Joi.number().allow(null),
-    height: Joi.number().allow(null),
-    weight: Joi.number().allow(null),
-    activity: Joi.string().allow(null),
+    age: Joi.number().integer().min(1).allow(null),
+    height: Joi.number().positive().allow(null),
+    weight: Joi.number().positive().allow(null),
+    activity: Joi.string()
+      .valid("sedentary", "lowActive", "active", "veryActive")
+      .allow(null),
     food_type: Joi.string().allow(null),
   });
 

@@ -19,6 +19,14 @@ export default class DBTokenRepository extends TokenRepository {
     return user;
   }
 
+  async getByUserId(userId) {
+    return await prisma.token.findUnique({
+      where: {
+        user_id: userId,
+      },
+    });
+  }
+
   async deleteToken(userId) {
     return await prisma.token.delete({
       where: {

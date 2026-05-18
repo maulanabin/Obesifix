@@ -54,7 +54,9 @@ class Recommender:
             d.update({"high_cal":1,"high_fat":1,"high_carb":1,"high_pro":1})
 
         for i in food_type.split(","):
-            d[i] = 1
+            selected_food_type = i.strip()
+            if selected_food_type in d:
+                d[selected_food_type] = 1
 
         final_input = list(d.values())
         return ob.k_neighbor([final_input])

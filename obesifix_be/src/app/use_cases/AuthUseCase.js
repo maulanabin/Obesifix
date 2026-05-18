@@ -77,6 +77,11 @@ export default class AuthUseCase {
 
     if (loggedUser !== 1) throw new Error("Unauthorized");
 
+    const storedToken = await this.tokenRpository.getByUserId(userId);
+    if (!storedToken || storedToken.refresh_token !== refresh_token) {
+      throw new Error("Unauthorized");
+    }
+
     const dataAccessToken = {
       user_id: userId,
       email,

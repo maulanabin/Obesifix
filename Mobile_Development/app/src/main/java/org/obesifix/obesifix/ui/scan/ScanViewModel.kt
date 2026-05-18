@@ -4,10 +4,8 @@ import androidx.lifecycle.ViewModel
 import org.obesifix.obesifix.ui.detail.DetailRepository
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
-import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 
-@HiltViewModel
 class ScanViewModel@Inject constructor(application: Application, private val detailRepository: DetailRepository) :
     AndroidViewModel(application) {
 

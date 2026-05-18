@@ -39,17 +39,16 @@ class PredictionRequestBody (
     override fun writeTo(sink: BufferedSink) {
         val length = file.length()
         val buffer = ByteArray(DEFAULT_BUFFER_SIZE)
-        val fileInputStream = FileInputStream(file)
         var uploaded = 0L
 
-        fileInputStream.use { inputStream ->
+        FileInputStream(file).use { inputStream ->
             var read: Int
             val handler = Handler(Looper.getMainLooper())
 
             while (inputStream.read(buffer).also { read = it } != -1) {
-                handler.post(ProgressUpdate(uploaded, length))
                 uploaded += read
                 sink.write(buffer, 0, read)
+                handler.post(ProgressUpdate(uploaded, length))
             }
         }
     }

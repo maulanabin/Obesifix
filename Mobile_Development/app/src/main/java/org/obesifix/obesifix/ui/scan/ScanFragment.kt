@@ -90,27 +90,40 @@ class ScanFragment : Fragment(), PredictionRequestBody.UploadCallback {
     }
 
     private fun uploadImage() {
-        if (selectedImage == null) {
+        val imageUri = selectedImage
+        if (imageUri == null) {
             binding.root.snackbar("Select an Image First")
             return
         }
 
         val parcelFileDescriptor =
-            requireContext().contentResolver.openFileDescriptor(selectedImage!!, "r", null)
+            requireContext().contentResolver.openFileDescriptor(imageUri, "r", null)
                 ?: return
-        val file = File(requireContext().cacheDir, requireContext().contentResolver.getFileName(selectedImage!!))
-        val inputStream = FileInputStream(parcelFileDescriptor.fileDescriptor)
-        val outputStream = FileOutputStream(file)
-        inputStream.copyTo(outputStream)
+        val fileName = requireContext().contentResolver.getFileName(imageUri).ifBlank {
+            "prediction_${System.currentTimeMillis()}.jpg"
+        }
+        val file = File(requireContext().cacheDir, fileName)
+        parcelFileDescriptor.use { descriptor ->
+            FileInputStream(descriptor.fileDescriptor).use { inputStream ->
+                FileOutputStream(file).use { outputStream ->
+                    inputStream.copyTo(outputStream)
+                }
+            }
+        }
 
         binding.progressBar.progress = 0
         val body = PredictionRequestBody(file, "image", this)
 
         lifecycleScope.launch {
             val token: String = userPreference.getAccessTokenUser().first()
-            val id: String = userPreference.getUserId().first()
-            Log.d("token home", "token home $token")
-            Log.d("id home", "id home $id")
+            if (token.isBlank()) {
+                withContext(Dispatchers.IO) {
+                    userPreference.logout()
+                }
+                startActivity(Intent(context, LoginActivity::class.java))
+                requireActivity().finish()
+                return@launch
+            }
             val bearer = "Bearer $token"
             Api().predictFood(
                 bearer,
@@ -144,7 +157,7 @@ class ScanFragment : Fragment(), PredictionRequestBody.UploadCallback {
 
                                 val intent =
                                     Intent(requireContext(), DetailScanFood::class.java).apply {
-                                        putExtra(DetailScanFood.EXTRA_IMAGE, selectedImage.toString())
+                                        putExtra(DetailScanFood.EXTRA_IMAGE, imageUri.toString())
                                         putExtra(DetailScanFood.EXTRA_NAME_FOOD, nameFood)
                                         putExtra(DetailScanFood.EXTRA_SERVING, serving)
                                         putExtra(DetailScanFood.EXTRA_CALORIE, calorie)
@@ -158,6 +171,7 @@ class ScanFragment : Fragment(), PredictionRequestBody.UploadCallback {
                         }
                     } else {
                         if (response.code() == 403) {
+                            binding.progressBar.progress = 0
                             Toast.makeText(context, "Unauthorized : ${response.message()}", Toast.LENGTH_SHORT).show()
                             viewLifecycleOwner.lifecycleScope.launch {
                                 withContext(Dispatchers.IO) {
@@ -167,6 +181,7 @@ class ScanFragment : Fragment(), PredictionRequestBody.UploadCallback {
                             startActivity(Intent(context, LoginActivity::class.java))
                             requireActivity().finish()
                         } else {
+                            binding.progressBar.progress = 0
                             Toast.makeText(context, "Response is failed: ${response.message()}", Toast.LENGTH_SHORT).show()
                             Log.d("upload", "Error: ${response.code()}")
                         }
@@ -175,13 +190,12 @@ class ScanFragment : Fragment(), PredictionRequestBody.UploadCallback {
                 }
 
                 override fun onFailure(call: Call<PredictionResponse>, t: Throwable) {
+                    binding.progressBar.progress = 0
                     binding.root.snackbar(t.message ?: "Upload failed. Please try again")
                     Log.d("upload", "onFailure: ${t.message}")
                 }
             })
         }
-
-        binding.progressBar.progress = 100
     }
 
 

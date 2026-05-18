@@ -5,11 +5,9 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import androidx.paging.PagingData
 import androidx.paging.cachedIn
-import dagger.hilt.android.lifecycle.HiltViewModel
 import org.obesifix.obesifix.database.entity.HistoryNutrition
 import javax.inject.Inject
 
-@HiltViewModel
 class HistoryViewModel@Inject constructor(private val historyRepository: HistoryRepository): ViewModel() {
     val isLoading = historyRepository.isLoading
 
