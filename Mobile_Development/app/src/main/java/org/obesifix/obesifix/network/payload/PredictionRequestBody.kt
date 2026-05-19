@@ -32,7 +32,7 @@ class PredictionRequestBody (
         }
     }
 
-    override fun contentType() = "$contentType/*; charset=utf-8".toMediaTypeOrNull()
+    override fun contentType() = contentType.toMediaTypeOrNull()
 
     override fun contentLength() = file.length()
 

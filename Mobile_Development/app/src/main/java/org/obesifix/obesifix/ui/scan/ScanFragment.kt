@@ -99,9 +99,11 @@ class ScanFragment : Fragment(), PredictionRequestBody.UploadCallback {
         val parcelFileDescriptor =
             requireContext().contentResolver.openFileDescriptor(imageUri, "r", null)
                 ?: return
-        val fileName = requireContext().contentResolver.getFileName(imageUri).ifBlank {
-            "prediction_${System.currentTimeMillis()}.jpg"
-        }
+        val mimeType = requireContext().contentResolver.getType(imageUri) ?: "image/jpeg"
+        val fileName = getPredictionFileName(
+            requireContext().contentResolver.getFileName(imageUri),
+            mimeType
+        )
         val file = File(requireContext().cacheDir, fileName)
         parcelFileDescriptor.use { descriptor ->
             FileInputStream(descriptor.fileDescriptor).use { inputStream ->
@@ -112,7 +114,7 @@ class ScanFragment : Fragment(), PredictionRequestBody.UploadCallback {
         }
 
         binding.progressBar.progress = 0
-        val body = PredictionRequestBody(file, "image", this)
+        val body = PredictionRequestBody(file, mimeType, this)
 
         lifecycleScope.launch {
             val token: String = userPreference.getAccessTokenUser().first()
@@ -198,6 +200,25 @@ class ScanFragment : Fragment(), PredictionRequestBody.UploadCallback {
                 }
             })
         }
+    }
+
+    private fun getPredictionFileName(fileName: String, mimeType: String): String {
+        val cleanFileName = fileName.trim()
+        val validExtensions = listOf(".jpg", ".jpeg", ".png")
+        val extension = validExtensions.firstOrNull {
+            cleanFileName.lowercase(Locale.ROOT).endsWith(it)
+        }
+
+        if (cleanFileName.isNotBlank() && extension != null) {
+            return if (cleanFileName.endsWith(extension)) {
+                cleanFileName
+            } else {
+                cleanFileName.substringBeforeLast(".") + extension
+            }
+        }
+
+        val fallbackExtension = if (mimeType == "image/png") ".png" else ".jpg"
+        return "prediction_${System.currentTimeMillis()}$fallbackExtension"
     }
 
 
