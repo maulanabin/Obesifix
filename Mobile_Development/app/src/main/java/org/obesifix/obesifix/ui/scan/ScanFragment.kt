@@ -182,8 +182,10 @@ class ScanFragment : Fragment(), PredictionRequestBody.UploadCallback {
                             requireActivity().finish()
                         } else {
                             binding.progressBar.progress = 0
-                            Toast.makeText(context, "Response is failed: ${response.message()}", Toast.LENGTH_SHORT).show()
-                            Log.d("upload", "Error: ${response.code()}")
+                            val errorBody = response.errorBody()?.string()
+                            val errorMessage = "Response failed: ${response.code()} - $errorBody"
+                            Toast.makeText(context, errorMessage, Toast.LENGTH_SHORT).show()
+                            Log.d("upload", errorMessage)
                         }
 
                     }
